@@ -1,23 +1,19 @@
 const btn = document.querySelector(".btn")
 const chiste = document.querySelector(".joke")
 
+const url = "https://api.chucknorris.io/jokes/random"
 
-const broma = () => {
-
-const xhr = new XMLHttpRequest()
-
-xhr.open ("GET", "https://api.chucknorris.io/jokes/random")
-
-xhr.onreadystatechange = function () {
-  
-  if (this.readyState === 4 && this.status === 200) {
-
-    chiste.innerHTML = JSON.parse(this.responseText).value
-
-  }
+function getJoke () {
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      if (data.value.length > 150) {
+        getJoke()
+      } else {
+        chiste.innerHTML = data.value
+      }
+    }     
+)
 }
 
-xhr.send()
-}
-
-btn.addEventListener("click", broma)
+btn.addEventListener("click", getJoke)
