@@ -65,8 +65,22 @@ img {
   body {
     margin: 0;
   }
+  .container {
+    padding: 20px 5px;
+  }
   img {
-    width: 360px;
+    width: 300px;
     padding: 10px;
+  }
+  .joke {
+    font-size: 22px;
+    letter-spacing: 1px;
+    line-height: 36px;
+    margin: 10px auto;
+    max-width: 340px;
+    padding: 10px;
+  }
+  .btn {
+    margin: 0;
   }
 }
